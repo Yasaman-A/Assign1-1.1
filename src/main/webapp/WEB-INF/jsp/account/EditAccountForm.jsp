@@ -1,6 +1,7 @@
+
 <%--
 
-       Copyright ${license.git.copyrightYears} the original author or authors.
+       Copyright 2010-2019 the original author or authors.
 
        Licensed under the Apache License, Version 2.0 (the "License");
        you may not use this file except in compliance with the License.
@@ -29,20 +30,19 @@
 			<td>${actionBean.username}</td>
 		</tr>
 		<tr>
-			<td>New password:</td>
-			<td><stripes:text name="password" /></td>
+			<td>Password:</td>
+			<td><stripes:password name="password" /></td>
 		</tr>
 		<tr>
 			<td>Repeat password:</td>
-			<td><stripes:text name="repeatedPassword" /></td>
+			<td><stripes:password name="repeatedPassword" /></td>
 		</tr>
 	</table>
+
 	<%@ include file="IncludeAccountFields.jsp"%>
 
 	<stripes:submit name="editAccount" value="Save Account Information" />
 
-</stripes:form> <stripes:link
-	beanclass="org.mybatis.jpetstore.web.actions.OrderActionBean"
-	event="listOrders">My Orders</stripes:link></div>
+</stripes:form></div>
 
 <%@ include file="../common/IncludeBottom.jsp"%>

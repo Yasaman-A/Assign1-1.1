@@ -1,5 +1,5 @@
 /**
- *    Copyright ${license.git.copyrightYears} the original author or authors.
+ *    Copyright 2010-2019 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -30,6 +30,7 @@ public class Account implements Serializable {
 
   private String username;
   private String password;
+  // private String repeatedPassword;
   private String email;
   private String firstName;
   private String lastName;
@@ -60,8 +61,18 @@ public class Account implements Serializable {
   }
 
   public void setPassword(String password) {
+    System.out.println("Setting  password................................." + password);
     this.password = password;
   }
+
+  // public String getRepeatedPassword() {
+  // return repeatedPassword;
+  // }
+  //
+  // public void setRepeatedPassword(String repeatedPassword) {
+  // System.out.println("Setting repeated .................................");
+  // this.repeatedPassword = repeatedPassword;
+  // }
 
   public String getEmail() {
     return email;

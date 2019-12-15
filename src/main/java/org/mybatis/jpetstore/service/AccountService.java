@@ -1,5 +1,5 @@
 /**
- *    Copyright ${license.git.copyrightYears} the original author or authors.
+ *    Copyright 2010-2019 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -67,7 +67,8 @@ public class AccountService {
   public void updateAccount(Account account) {
     accountMapper.updateAccount(account);
     accountMapper.updateProfile(account);
-
+    // System.out.println("*****************************" + account.getPassword() + "********" +
+    // account.getRepeatedPassword());
     Optional.ofNullable(account.getPassword()).filter(password -> password.length() > 0)
         .ifPresent(password -> accountMapper.updateSignon(account));
   }

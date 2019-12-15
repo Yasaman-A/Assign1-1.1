@@ -1,5 +1,5 @@
 /**
- *    Copyright ${license.git.copyrightYears} the original author or authors.
+ *    Copyright 2010-2019 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -73,7 +73,7 @@ public class AccountActionBean extends AbstractActionBean {
     return account.getUsername();
   }
 
-  @Validate(required = true, on = { "signon", "newAccount", "editAccount" })
+  @Validate(required = true, on = { "signon", "newAccount" })
   public void setUsername(String username) {
     account.setUsername(username);
   }
@@ -82,9 +82,16 @@ public class AccountActionBean extends AbstractActionBean {
     return account.getPassword();
   }
 
-  @Validate(required = true, on = { "signon", "newAccount", "editAccount" })
+  @Validate(required = true, on = { "signon", "newAccount" })
   public void setPassword(String password) {
+    System.out.println("===================================================" + password);
     account.setPassword(password);
+  }
+
+  @Validate(on = { "newAccount", "editAccount" })
+  public void setRepeatedPassword(String repeatedPassword) {
+    System.out.println("===================================================" + repeatedPassword);
+    // account.setRepeatedPassword(repeatedPassword);
   }
 
   public List<Product> getMyList() {
