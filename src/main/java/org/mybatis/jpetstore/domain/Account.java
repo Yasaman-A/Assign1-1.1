@@ -30,7 +30,7 @@ public class Account implements Serializable {
 
   private String username;
   private String password;
-  // private String repeatedPassword;
+  private String repeatedPassword;
   private String email;
   private String firstName;
   private String lastName;
@@ -65,14 +65,14 @@ public class Account implements Serializable {
     this.password = password;
   }
 
-  // public String getRepeatedPassword() {
-  // return repeatedPassword;
-  // }
-  //
-  // public void setRepeatedPassword(String repeatedPassword) {
-  // System.out.println("Setting repeated .................................");
-  // this.repeatedPassword = repeatedPassword;
-  // }
+  public String getRepeatedPassword() {
+    return repeatedPassword;
+  }
+
+  public void setRepeatedPassword(String repeatedPassword) {
+    System.out.println("Setting repeated .................................");
+    this.repeatedPassword = repeatedPassword;
+  }
 
   public String getEmail() {
     return email;

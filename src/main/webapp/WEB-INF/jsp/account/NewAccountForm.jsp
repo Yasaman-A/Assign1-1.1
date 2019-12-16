@@ -30,11 +30,11 @@
 		</tr>
 		<tr>
 			<td>New password:</td>
-			<td><stripes:password name="password" /></td>
+			<td><stripes:password name="password" /> (Optional)</td>
 		</tr>
 		<tr>
 			<td>Repeat password:</td>
-			<td><stripes:password name="repeatedPassword" /></td>
+			<td><stripes:password name="repeatedPassword" /> (Optional)</td>
 		</tr>
 	</table>
 

@@ -84,14 +84,12 @@ public class AccountActionBean extends AbstractActionBean {
 
   @Validate(required = true, on = { "signon", "newAccount" })
   public void setPassword(String password) {
-    System.out.println("===================================================" + password);
     account.setPassword(password);
   }
 
   @Validate(on = { "newAccount", "editAccount" })
   public void setRepeatedPassword(String repeatedPassword) {
-    System.out.println("===================================================" + repeatedPassword);
-    // account.setRepeatedPassword(repeatedPassword);
+    account.setRepeatedPassword(repeatedPassword);
   }
 
   public List<Product> getMyList() {
@@ -120,6 +118,16 @@ public class AccountActionBean extends AbstractActionBean {
    * @return the resolution
    */
   public Resolution newAccount() {
+    if (matchingPassword() == false) {
+      String value = "Password fields do not match.";
+      setMessage(value);
+      return new ForwardResolution(NEW_ACCOUNT);
+    }
+    if (checkRequiredFields() == false) {
+      String value = "One or more required filed does not have a value.";
+      setMessage(value);
+      return new ForwardResolution(NEW_ACCOUNT);
+    }
     accountService.insertAccount(account);
     account = accountService.getAccount(account.getUsername());
     myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
@@ -142,10 +150,44 @@ public class AccountActionBean extends AbstractActionBean {
    * @return the resolution
    */
   public Resolution editAccount() {
+    if (matchingPassword() == false) {
+      String value = "Password fields do not match.";
+      setMessage(value);
+      return new ForwardResolution(EDIT_ACCOUNT);
+    }
+    if (checkRequiredFields() == false) {
+      String value = "One or more required filed does not have a value.";
+      setMessage(value);
+      return new ForwardResolution(EDIT_ACCOUNT);
+    }
     accountService.updateAccount(account);
     account = accountService.getAccount(account.getUsername());
     myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
     return new RedirectResolution(CatalogActionBean.class);
+  }
+
+  private boolean matchingPassword() {
+    if (account.getPassword() != null) {
+      if (account.getRepeatedPassword() != null) {
+        if (!(account.getPassword().equals(account.getRepeatedPassword()))) {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  private boolean checkRequiredFields() {
+    if ((account.getFirstName() == null) || (account.getLastName() == null) || (account.getEmail() == null)
+        || (account.getPhone() == null) || (account.getAddress1() == null) || (account.getCity() == null)
+        || (account.getCountry() == null) || (account.getZip() == null) || (account.getCity() == null)) {
+      // || (account.getState() == null
+      return false;
+    }
+    return true;
   }
 
   /**

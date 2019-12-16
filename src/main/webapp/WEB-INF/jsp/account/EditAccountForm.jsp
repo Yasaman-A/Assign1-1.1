@@ -31,11 +31,11 @@
 		</tr>
 		<tr>
 			<td>Password:</td>
-			<td><stripes:password name="password" /></td>
+			<td><stripes:password name="password" /> (Optional)</td>
 		</tr>
 		<tr>
 			<td>Repeat password:</td>
-			<td><stripes:password name="repeatedPassword" /></td>
+			<td><stripes:password name="repeatedPassword" /> (Optional)</td>
 		</tr>
 	</table>
 
@@ -43,6 +43,12 @@
 
 	<stripes:submit name="editAccount" value="Save Account Information" />
 
-</stripes:form></div>
+</stripes:form>
+
+<stripes:link
+	beanclass="org.mybatis.jpetstore.web.actions.OrderActionBean"
+	event="listOrders">My Orders</stripes:link>
+
+</div>
 
 <%@ include file="../common/IncludeBottom.jsp"%>

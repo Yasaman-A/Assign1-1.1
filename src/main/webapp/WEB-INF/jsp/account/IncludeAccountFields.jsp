@@ -40,7 +40,7 @@
 	</tr>
 	<tr>
 		<td>Address 2:</td>
-		<td><stripes:text size="40" name="account.address2" /></td>
+		<td><stripes:text size="40" name="account.address2" /> (Optional)</td>
 	</tr>
 	<tr>
 		<td>City:</td>
