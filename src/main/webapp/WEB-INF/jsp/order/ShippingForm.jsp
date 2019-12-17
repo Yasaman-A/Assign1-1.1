@@ -39,7 +39,7 @@
 		</tr>
 		<tr>
 			<td>Address 2:</td>
-			<td><stripes:text size="40" name="order.shipAddress2" /></td>
+			<td><stripes:text size="40" name="order.shipAddress2" />(Optional)</td>
 		</tr>
 		<tr>
 			<td>City:</td>

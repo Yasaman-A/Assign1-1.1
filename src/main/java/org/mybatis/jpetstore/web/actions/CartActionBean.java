@@ -66,13 +66,16 @@ public class CartActionBean extends AbstractActionBean {
    * @return the resolution
    */
   public Resolution addItemToCart() {
+    System.out.println("000>>>>><<<<<<<<<<<<<<<<<<<<<<<<<");
     if (cart.containsItemId(workingItemId)) {
       cart.incrementQuantityByItemId(workingItemId);
     } else {
       // isInStock is a "real-time" property that must be updated
       // every time an item is added to the cart, even if other
       // item details are cached.
+      System.out.println(">>>>><<<<<<<<<<<<<<<<<<<<<<<<<");
       boolean isInStock = catalogService.isItemInStock(workingItemId);
+      System.out.println(">>>>><<<<<<<<<<<<<<<<<<<<<<<<<" + isInStock);
       Item item = catalogService.getItem(workingItemId);
       cart.addItem(item, isInStock);
     }

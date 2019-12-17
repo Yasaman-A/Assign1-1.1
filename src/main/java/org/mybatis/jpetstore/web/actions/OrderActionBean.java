@@ -140,15 +140,39 @@ public class OrderActionBean extends AbstractActionBean {
    * @return the resolution
    */
   public Resolution newOrder() {
+    String error = "One or more required filed does not have a value.";
     HttpSession session = context.getRequest().getSession();
 
     if (shippingAddressRequired) {
+
+      if (checkBillRequiredFields() == false) {
+
+        setMessage(error);
+        return new ForwardResolution(NEW_ORDER);
+      }
       shippingAddressRequired = false;
       return new ForwardResolution(SHIPPING);
     } else if (!isConfirmed()) {
+
+      if (checkBillRequiredFields() == false) {
+        setMessage(error);
+        return new ForwardResolution(NEW_ORDER);
+      }
+      if (checkShipRequiredFields() == false) {
+        setMessage(error);
+        return new ForwardResolution(SHIPPING);
+      }
       return new ForwardResolution(CONFIRM_ORDER);
     } else if (getOrder() != null) {
-
+      if (checkBillRequiredFields() == false) {
+        setMessage(error);
+        return new ForwardResolution(NEW_ORDER);
+      }
+      if (checkShipRequiredFields() == false) {
+        setMessage(error);
+        return new ForwardResolution(SHIPPING);
+      }
+      System.out.println("going to insert ..................");
       orderService.insertOrder(order);
 
       CartActionBean cartBean = (CartActionBean) session.getAttribute("/actions/Cart.action");
@@ -161,6 +185,27 @@ public class OrderActionBean extends AbstractActionBean {
       setMessage("An error occurred processing your order (order was null).");
       return new ForwardResolution(ERROR);
     }
+  }
+
+  private boolean checkBillRequiredFields() {
+    if ((order.getCreditCard() == null) || (order.getExpiryDate() == null) || (order.getBillToFirstName() == null)
+        || (order.getBillToLastName() == null) || (order.getBillAddress1() == null) || (order.getBillCity() == null)
+        || (order.getBillCountry() == null) || (order.getBillZip() == null)) {
+      // || (order.getBillState == null)
+
+      return false;
+    }
+    return true;
+  }
+
+  private boolean checkShipRequiredFields() {
+    if ((order.getShipToFirstName() == null) || (order.getShipToLastName() == null) || (order.getShipAddress1() == null)
+        || (order.getShipCity() == null) || (order.getShipCountry() == null) || (order.getShipZip() == null)) {
+      // || (order.getShipState == null)
+
+      return false;
+    }
+    return true;
   }
 
   /**

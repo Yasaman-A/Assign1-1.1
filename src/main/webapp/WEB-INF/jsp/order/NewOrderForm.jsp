@@ -58,7 +58,7 @@
 		</tr>
 		<tr>
 			<td>Address 2:</td>
-			<td><stripes:text size="40" name="order.billAddress2" /></td>
+			<td><stripes:text size="40" name="order.billAddress2" />(Optional)</td>
 		</tr>
 		<tr>
 			<td>City:</td>
