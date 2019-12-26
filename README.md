@@ -10,20 +10,16 @@ Essentials
 Running JPetStore sample under Tomcat (using the [cargo-maven2-plugin](https://codehaus-cargo.github.io/cargo/Maven2+plugin.html)).
 
 
-- Create a folder, e.g., petstore1
-  $ mkdir petstore1
-- Enter to the directory
-  $ cd petstore1
-- Get the war file for version 1.0 and put it in this folder.
-
-- Unzip the folder and enter into the jpetstore folder 
-  
-- Startup the Tomcat server and deploy web application
-  $ ./mvnw cargo:run -Dcargo.servlet.port=8080 -P tomcat90;
+- Download the application (v1.1):
+	$git clone https://github.com/Yasaman-A/Assign1-1.1.git
+- Enter to the folder
+	$cd Assign1-1.1
+- Now, start your application on port 8080:
+	$./mvnw cargo:run -Dcargo.servlet.port=8080 -P tomcat90;
 
 - Run application in browser http://localhost:8080/jpetstore/ 
-- Press Ctrl-C to stop the server.
 
+- Press Ctrl-C to stop the server.
 
 ================================================================
   > Note:
