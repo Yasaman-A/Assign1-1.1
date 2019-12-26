@@ -1,47 +1,30 @@
-MyBatis JPetStore
-=================
+MyBatis JPetStore V1.1
+======================
 
-[![Build Status](https://travis-ci.org/mybatis/jpetstore-6.svg?branch=master)](https://travis-ci.org/mybatis/jpetstore-6)
-[![Coverage Status](https://coveralls.io/repos/github/mybatis/jpetstore-6/badge.svg?branch=master)](https://coveralls.io/github/mybatis/jpetstore-6?branch=master)
-[![License](http://img.shields.io/:license-apache-brightgreen.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
-
-![mybatis-jpetstore](http://mybatis.github.io/images/mybatis-logo.png)
-
-JPetStore 6 is a full web application built on top of MyBatis 3, Spring 5 and Stripes.
+JPetStore 6 is a full web application built on top of MyBatis 3, Spring 5 and Stripes. This version is modified as a teaching tool for software testing.
 
 Essentials
 ----------
 
-* [See the docs](http://www.mybatis.org/jpetstore-6)
-
-## Other versions that you may want to know about
-
-- JPetstore on top of Spring, Spring MVC, MyBatis 3, and Spring Security https://github.com/making/spring-jpetstore
-- JPetstore with Vaadin and Spring Boot with Java Config https://github.com/igor-baiborodine/jpetstore-6-vaadin-spring-boot
-- JPetstore on MyBatis Spring Boot Starter https://github.com/kazuki43zoo/mybatis-spring-boot-jpetstore
-
 ## Run on Application Server
 Running JPetStore sample under Tomcat (using the [cargo-maven2-plugin](https://codehaus-cargo.github.io/cargo/Maven2+plugin.html)).
 
-- Clone this repository
 
-  ```
-  $ git clone https://github.com/mybatis/jpetstore-6.git
-  ```
-
-- Build war file
-
-  ```
-  $ cd jpetstore-6
-  $ ./mvnw clean package
-  ```
-
+- Create a folder, e.g., petstore1
+  $ mkdir petstore1
+- Enter to the directory
+  $ cd petstore1
+- Get the war file for version 1
+  $ 
+  
 - Startup the Tomcat server and deploy web application
+  $ ./mvnw cargo:run -Dcargo.servlet.port=8080 -P tomcat90;
 
-  ```
-  $ ./mvnw cargo:run -P tomcat90
-  ```
+- Run application in browser http://localhost:8080/jpetstore/ 
+- Press Ctrl-C to stop the server.
 
+
+================================================================
   > Note:
   >
   > We provide maven profiles per application server as follow:
@@ -61,15 +44,3 @@ Running JPetStore sample under Tomcat (using the [cargo-maven2-plugin](https://c
   > | glassfish5     | Running under the GlassFish 5(Java EE 8) |
   > | glassfish4     | Running under the GlassFish 4(Java EE 7) |
   > | resin          | Running under the Resin 4 |
-
-- Run application in browser http://localhost:8080/jpetstore/ 
-- Press Ctrl-C to stop the server.
-
-
-## Try integration tests
-
-Perform integration tests for screen transition.
-
-```
-$ ./mvnw clean verify -P tomcat90
-```
