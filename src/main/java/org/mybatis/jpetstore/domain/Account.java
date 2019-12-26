@@ -61,7 +61,7 @@ public class Account implements Serializable {
   }
 
   public void setPassword(String password) {
-    System.out.println("Setting  password................................." + password);
+//    System.out.println("Setting  password................................." + password);
     this.password = password;
   }
 
@@ -70,7 +70,7 @@ public class Account implements Serializable {
   }
 
   public void setRepeatedPassword(String repeatedPassword) {
-    System.out.println("Setting repeated .................................");
+//    System.out.println("Setting repeated .................................");
     this.repeatedPassword = repeatedPassword;
   }
 
