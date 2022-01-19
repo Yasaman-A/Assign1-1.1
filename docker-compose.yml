@@ -2,7 +2,7 @@ services:
   app:
     restart: unless-stopped
     build: .
+    container_name: jpetstore_1.1
+    image: jpetstore:1.1
     ports:
-      - target: 8080
-        published: 8080
-    container_name: jpetstore
+      - 8081:8080
